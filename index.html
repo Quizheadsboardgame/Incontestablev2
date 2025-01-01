@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
      <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width,
-initial-scale=1.0">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>INCONTESTABLE</title>
      <style>
          body {
@@ -42,7 +41,7 @@ initial-scale=1.0">
              margin-top: 20px;
              font-size: 18px;
              font-weight: bold;
-             color: black; /* White text inside the box */
+             color: black; /* Text color inside the box */
              background-color: white; /* Box background white */
              padding: 10px;
              border-radius: 5px;
@@ -53,6 +52,12 @@ initial-scale=1.0">
              font-weight: bold;
              color: black;
          }
+         #rules {
+             margin-top: 20px;
+             font-size: 16px;
+             color: black;
+             text-align: left;
+         }
      </style>
 </head>
 <body>
@@ -62,6 +67,14 @@ initial-scale=1.0">
      <button onclick="generateQuestion()">Get a Random Category</button>
      <div id="question"></div>
      <div id="timer"></div>
+     <div id="rules">
+         <h2>Rules:</h2>
+         <ol>
+             <li>Answer needs to be unique, the longest, and correct.</li>
+             <li>Answers can be contested, but if you incorrectly contest, you are disqualified.</li>
+             <li>Play until you can no longer add an answer to the board.</li>
+         </ol>
+     </div>
 </div>
 
 <script>
@@ -170,23 +183,18 @@ initial-scale=1.0">
      let timer;
 
      function generateQuestion() {
-         // Stop any previous timer
          clearInterval(timer);
 
-         const randomIndex = Math.floor(Math.random() *
-questions.length);
-         document.getElementById('question').textContent =
-questions[randomIndex];
+         const randomIndex = Math.floor(Math.random() * questions.length);
+         document.getElementById('question').textContent = questions[randomIndex];
 
-         // Start the 3-minute timer
-         let timeLeft = 180; // 3 minutes in seconds
+         let timeLeft = 180;
          const timerElement = document.getElementById('timer');
 
          timer = setInterval(function() {
              const minutes = Math.floor(timeLeft / 60);
              const seconds = timeLeft % 60;
-             timerElement.textContent = `${minutes}:${seconds < 10 ? '0'
-+ seconds : seconds}`;
+             timerElement.textContent = `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
              timeLeft--;
 
              if (timeLeft < 0) {
