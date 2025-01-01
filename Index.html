@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width,
+initial-scale=1.0">
+     <title>INCONTESTABLE</title>
+     <style>
+         body {
+             font-family: Arial, sans-serif;
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             height: 100vh;
+             margin: 0;
+             background-color: #add8e6; /* Light blue background */
+             color: white; /* Default text color is white */
+         }
+         .container {
+             text-align: center;
+             background-color: #fff;
+             padding: 30px;
+             border-radius: 8px;
+             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+         }
+         h1 {
+             color: black; /* Title text color set to black */
+         }
+         button {
+             padding: 10px 20px;
+             font-size: 16px;
+             cursor: pointer;
+             border: none;
+             border-radius: 5px;
+             background-color: black; /* Black button background */
+             color: white; /* White text inside the button */
+         }
+         button:hover {
+             background-color: #333; /* Slightly darker black on hover */
+         }
+         #question {
+             margin-top: 20px;
+             font-size: 18px;
+             font-weight: bold;
+             color: black; /* White text inside the box */
+             background-color: white; /* Box background white */
+             padding: 10px;
+             border-radius: 5px;
+         }
+         #timer {
+             margin-top: 20px;
+             font-size: 18px;
+             font-weight: bold;
+             color: black;
+         }
+     </style>
+</head>
+<body>
+
+<div class="container">
+     <h1>INCONTESTABLE</h1>
+     <button onclick="generateQuestion()">Get a Random Category</button>
+     <div id="question"></div>
+     <div id="timer"></div>
+</div>
+
+<script>
+     const questions = [
+         "Boys’ names starting with S.",
+         "Movies that include a sport in the title.",
+         "Famous people with the last name Smith.",
+         "Countries in Africa.",
+         "Types of dogs that are known for being good with children.",
+         "Cities in Italy.",
+         "Famous authors from the 20th century.",
+         "Types of pasta.",
+         "Songs by The Beatles.",
+         "Famous landmarks in Paris.",
+         "Types of fruit that are yellow.",
+         "Cities in South America.",
+         "Superheroes who are part of the Justice League.",
+         "Brands of soft drinks.",
+         "Countries starting with the letter ‘B.’",
+         "Vegetables that are typically orange.",
+         "Capitals of European countries.",
+         "Planets in our solar system.",
+         "Famous fictional characters starting with the letter ‘C.’",
+         "Oscar-winning films from the 1990s.",
+         "Types of trees that lose their leaves in autumn.",
+         "Famous musicians from the 1980s.",
+         "Colors in a rainbow.",
+         "Famous sports stadiums around the world.",
+         "Things you can find in a kitchen.",
+         "Types of coffee drinks.",
+         "Authors who have won the Pulitzer Prize for Fiction.",
+         "Types of sharks.",
+         "Famous film directors.",
+         "Mountain ranges in North America.",
+         "Names of oceans on Earth.",
+         "Harry Potter characters who are Slytherins.",
+         "Types of clouds.",
+         "Items in a typical office.",
+         "Board games that are popular worldwide.",
+         "Types of pasta sauces.",
+         "Actors who have played James Bond.",
+         "Things that are typically found in a first aid kit.",
+         "Types of cheese.",
+         "Countries in Southeast Asia.",
+         "Famous movie quotes.",
+         "Famous American presidents.",
+         "Things you might find in a library.",
+         "Brands of shoes.",
+         "Types of motorcycles.",
+         "TV shows that feature a detective.",
+         "Classic fairy tale characters.",
+         "Characters in the Marvel Cinematic Universe.",
+         "Types of dance styles.",
+         "Famous natural disasters in history.",
+         "Genres of music.",
+         "Things you might bring on a camping trip.",
+         "Countries where English is the primary language.",
+         "Things you can do on a beach.",
+         "Vegetables commonly used in salads.",
+         "Famous art museums.",
+         "Bird species that are endangered.",
+         "Popular tourist attractions in New York City.",
+         "Popular video game franchises.",
+         "Types of tea.",
+         "Famous battles in history.",
+         "Famous landmarks in London.",
+         "Types of cakes.",
+         "Famous explorers in history.",
+         "Famous baseball players.",
+         "Disney princesses.",
+         "Popular board games for families.",
+         "Popular amusement parks in the US.",
+         "Types of sports played with a ball.",
+         "Famous mountain peaks.",
+         "Types of sushi rolls.",
+         "Famous comedy films.",
+         "Guitar brands.",
+         "Famous operas.",
+         "Things you can do in a gym.",
+         "Marvel superheroes who are part of the X-Men.",
+         "Famous events in the history of space exploration.",
+         "Types of gemstones.",
+         "Popular video game characters.",
+         "Famous explorers who went to the North Pole.",
+         "Famous movie villains.",
+         "Popular fast food chains.",
+         "Best-selling books of all time.",
+         "Famous artists whose names start with the letter ‘P.’",
+         "Common household pets.",
+         "Colors that are commonly used in traffic lights.",
+         "Historical figures from Ancient Greece.",
+         "Famous musical instruments.",
+         "Famous animals in popular culture.",
+         "Things you can see in the sky at night.",
+         "Types of bread.",
+         "Types of weather conditions.",
+         "Things that are typically found in a hospital.",
+         "Popular social media platforms.",
+         "Things that are green.",
+         "Famous monuments in the world.",
+         "Olympic sports.",
+         "Types of weather phenomena.",
+         "Popular dog breeds."
+     ];
+
+     let timer;
+
+     function generateQuestion() {
+         // Stop any previous timer
+         clearInterval(timer);
+
+         const randomIndex = Math.floor(Math.random() *
+questions.length);
+         document.getElementById('question').textContent =
+questions[randomIndex];
+
+         // Start the 3-minute timer
+         let timeLeft = 180; // 3 minutes in seconds
+         const timerElement = document.getElementById('timer');
+
+         timer = setInterval(function() {
+             const minutes = Math.floor(timeLeft / 60);
+             const seconds = timeLeft % 60;
+             timerElement.textContent = `${minutes}:${seconds < 10 ? '0'
++ seconds : seconds}`;
+             timeLeft--;
+
+             if (timeLeft < 0) {
+                 clearInterval(timer);
+                 timerElement.textContent = "Time's up!";
+             }
+         }, 1000);
+     }
+</script>
+
+</body>
+</html>
